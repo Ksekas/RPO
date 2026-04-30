@@ -1,370 +1,434 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ksenia Kasparek</title>
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Users,
+  Gauge,
+  Lightbulb,
+  Trophy,
+  ArrowRight,
+  Flag,
+  Wrench,
+  Palette,
+  Rocket,
+  Mail,
+  Instagram,
+  ChevronRight,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+export default function FalconDynamicsSite() {
+  const [activeMember, setActiveMember] = useState(0);
 
-:root {
-  --text-main: #f8f5ff;
-  --text-soft: #e6ddf3;
-  --text-muted: #cfc2df;
-  --glass: rgba(255,255,255,0.07);
-  --glass-strong: rgba(255,255,255,0.10);
-  --border: rgba(255,255,255,0.13);
-  --accent: #efc0ff;
-  --accent-soft: #f6d8ff;
-  --shadow: 0 14px 34px rgba(0,0,0,0.18);
-}
+  const teamMembers = useMemo(
+    () => [
+      {
+        name: "Member 1",
+        role: "Team Manager",
+        bio: "Leads project planning, deadlines, communication, and overall coordination across the team.",
+      },
+      {
+        name: "Member 2",
+        role: "Design Engineer",
+        bio: "Focuses on CAD development, body shape decisions, and turning concepts into a fast, manufacturable car.",
+      },
+      {
+        name: "Member 3",
+        role: "Manufacturing Engineer",
+        bio: "Oversees production, testing, refinements, and ensures the final car meets technical requirements.",
+      },
+      {
+        name: "Member 4",
+        role: "Graphics & Branding",
+        bio: "Builds the visual identity of the team, from presentation boards to social media and car graphics.",
+      },
+      {
+        name: "Member 5",
+        role: "Research & Innovation",
+        bio: "Explores aerodynamic ideas, material choices, data, and performance improvements throughout development.",
+      },
+      {
+        name: "Member 6",
+        role: "Marketing & Sponsorship",
+        bio: "Manages outreach, partnerships, public image, and the way the team presents itself externally.",
+      },
+    ],
+    []
+  );
 
-/* TŁO */
-body {
-  font-family: "Segoe UI", sans-serif;
-  min-height: 100vh;
-  color: var(--text-main);
-  overflow-x: hidden;
-  background: linear-gradient(270deg, #160f1f, #25172f, #3a1843, #241732, #160f1f);
-  background-size: 400% 400%;
-  animation: gradientMove 18s ease infinite;
-}
+  const processSteps = [
+    {
+      title: "Research",
+      icon: Lightbulb,
+      text: "We started by studying STEM Racing regulations, successful past teams, aerodynamics, and branding strategy.",
+    },
+    {
+      title: "Concept Design",
+      icon: Palette,
+      text: "Initial concepts focused on speed, balance, and a bold visual identity aligned with our team colour scheme.",
+    },
+    {
+      title: "CAD & Testing",
+      icon: Wrench,
+      text: "Using digital modelling, we refined the body shape and prepared the car for manufacturing and evaluation.",
+    },
+    {
+      title: "Final Build",
+      icon: Rocket,
+      text: "The final product combines engineering precision, creativity, and teamwork into one competition-ready car.",
+    },
+  ];
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+  const carStats = [
+    { label: "Focus", value: "Speed + Stability" },
+    { label: "Design Goal", value: "Low Drag Profile" },
+    { label: "Build", value: "Precision Manufactured" },
+    { label: "Identity", value: "Bold Team Branding" },
+  ];
 
-/* SPOKOJNIEJSZY GLOW */
-.bg-glow {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(255, 110, 190, 0.12), transparent 30%),
-    radial-gradient(circle at 82% 22%, rgba(168, 102, 255, 0.12), transparent 28%),
-    radial-gradient(circle at 50% 82%, rgba(114, 76, 220, 0.09), transparent 30%);
-  filter: blur(90px);
-}
+  return (
+    <div className="min-h-screen bg-[#07111c] text-white overflow-x-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 left-[-10%] h-80 w-80 rounded-full bg-[#ea4b00]/20 blur-3xl" />
+        <div className="absolute top-40 right-[-8%] h-96 w-96 rounded-full bg-[#0c7d8f]/25 blur-3xl" />
+        <div className="absolute bottom-10 left-1/3 h-72 w-72 rounded-full bg-[#123563]/20 blur-3xl" />
+      </div>
 
-/* LAYOUT */
-.container {
-  position: relative;
-  z-index: 1;
-  width: min(760px, calc(100% - 28px));
-  margin: 0 auto;
-  padding: 22px 0 34px;
-}
+      <header className="sticky top-0 z-50 border-b border-white/10 backdrop-blur-xl bg-[#07111c]/70">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-2xl bg-[#0c7d8f] flex items-center justify-center shadow-lg shadow-[#0c7d8f]/30">
+              <Flag className="h-5 w-5 text-[#ea4b00]" />
+            </div>
+            <div>
+              <p className="text-sm text-white/60">STEM Racing / F1 in Schools</p>
+              <h1 className="text-lg font-semibold tracking-wide">Falcon Dynamics</h1>
+            </div>
+          </div>
 
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 42px 22px 34px;
-  margin-bottom: 26px;
-  border-radius: 28px;
-  background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
+          <nav className="hidden md:flex items-center gap-6 text-sm text-white/75">
+            <a href="#team" className="hover:text-white transition">Team</a>
+            <a href="#car" className="hover:text-white transition">Car</a>
+            <a href="#process" className="hover:text-white transition">Process</a>
+            <a href="#contact" className="hover:text-white transition">Contact</a>
+          </nav>
+        </div>
+      </header>
 
-.hero h1 {
-  font-size: clamp(2.4rem, 7vw, 4rem);
-  line-height: 1.05;
-  background: linear-gradient(90deg, #ffcaef, #dfc0ff, #ffd8f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+      <main className="relative z-10">
+        <section className="max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#0c7d8f]/40 bg-[#0c7d8f]/10 px-4 py-2 text-sm text-[#9ce7f2]">
+                <Trophy className="h-4 w-4" />
+                Built for performance, precision, and identity
+              </div>
 
-.hero p {
-  margin-top: 12px;
-  color: var(--text-soft);
-  font-size: 1rem;
-  line-height: 1.6;
-}
+              <h2 className="mt-6 text-5xl md:text-7xl font-black uppercase tracking-tight leading-[0.95]">
+                Race the
+                <span className="block text-[#ea4b00] drop-shadow-[0_0_20px_rgba(234,75,0,0.25)]">
+                  future
+                </span>
+              </h2>
 
-/* SECTION */
-.section-heading {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 0 4px 16px;
-}
+              <p className="mt-6 max-w-xl text-lg text-white/70 leading-relaxed">
+                A modern team website for your STEM Racing project, designed to showcase the people behind the build,
+                the car itself, and the creative process that turns an idea into race-day performance.
+              </p>
 
-.section-heading h2 {
-  color: var(--accent);
-  font-size: 1.18rem;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-}
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button asChild className="rounded-2xl bg-[#ea4b00] hover:bg-[#d54400] text-white px-6 py-6 shadow-lg shadow-[#ea4b00]/25">
+                  <a href="#team">
+                    Meet the Team <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild variant="outline" className="rounded-2xl border-white/15 bg-white/5 hover:bg-white/10 px-6 py-6 text-white">
+                  <a href="#process">See the Process</a>
+                </Button>
+              </div>
+            </motion.div>
 
-.line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, var(--accent), transparent);
-}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="relative"
+            >
+              <div className="relative rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#0c7d8f]/20 via-[#10233c]/80 to-[#07111c] p-6 shadow-2xl">
+                <div className="rounded-[1.5rem] border border-white/10 bg-[#08101a] p-6">
+                  <div className="flex items-center justify-between text-sm text-white/60">
+                    <span>Featured Concept</span>
+                    <span className="text-[#9ce7f2]">2026 Season</span>
+                  </div>
 
-/* ACCORDION */
-.accordion-item {
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--glass);
-  border: 1px solid var(--border);
-  margin-bottom: 14px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.10);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
+                  <div className="mt-8 relative h-72 md:h-80 rounded-[1.5rem] overflow-hidden border border-white/10 bg-[radial-gradient(circle_at_top,rgba(12,125,143,0.25),transparent_45%),linear-gradient(180deg,#0a1b2b,#07111c)]">
+                    <div className="absolute inset-x-8 bottom-10 h-3 rounded-full bg-white/10 blur-sm" />
+                    <motion.div
+                      animate={{ x: [0, 10, 0], y: [0, -4, 0] }}
+                      transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute left-1/2 top-1/2 w-[88%] -translate-x-1/2 -translate-y-1/2"
+                    >
+                      <svg viewBox="0 0 900 280" className="w-full drop-shadow-[0_20px_30px_rgba(0,0,0,0.35)]">
+                        <path d="M131 180 C200 120, 320 95, 470 92 L664 92 C734 92, 796 102, 834 122 L866 142 L842 168 C814 197, 764 216, 680 220 L336 220 C249 220, 174 206, 131 180 Z" fill="#ea4b00" />
+                        <path d="M295 111 L476 111 C573 111, 650 114, 726 132 L703 160 L275 160 Z" fill="#0f2037" opacity="0.95" />
+                        <circle cx="260" cy="214" r="33" fill="#02060c" />
+                        <circle cx="700" cy="214" r="33" fill="#02060c" />
+                        <circle cx="260" cy="214" r="14" fill="#0c7d8f" />
+                        <circle cx="700" cy="214" r="14" fill="#0c7d8f" />
+                        <path d="M102 176 L148 176 L129 198 L84 198 Z" fill="#0c7d8f" />
+                        <path d="M832 130 L886 144 L850 163 Z" fill="#0c7d8f" />
+                        <path d="M446 90 L511 57 L548 57 L525 90 Z" fill="#0c7d8f" />
+                      </svg>
+                    </motion.div>
+                  </div>
 
-.accordion-item:hover {
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,0.18);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.14);
-}
+                  <div className="mt-6 grid grid-cols-2 gap-4">
+                    {carStats.map((stat) => (
+                      <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                        <p className="text-xs uppercase tracking-[0.2em] text-white/45">{stat.label}</p>
+                        <p className="mt-2 text-sm md:text-base font-semibold text-white/90">{stat.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
-.accordion-item.active {
-  border-color: rgba(240,179,255,0.24);
-  box-shadow: 0 14px 32px rgba(0,0,0,0.16);
-}
+        <section className="max-w-7xl mx-auto px-6 pb-8">
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { icon: Users, title: "6-person team", text: "Dedicated space for each team member and their role." },
+              { icon: Gauge, title: "Car showcase", text: "Present specs, goals, and the story behind the final design." },
+              { icon: Lightbulb, title: "Creative process", text: "Show judges the thinking, research, and iteration behind the build." },
+            ].map((item) => (
+              <Card key={item.title} className="rounded-[1.5rem] border-white/10 bg-white/5 backdrop-blur-sm shadow-xl">
+                <CardContent className="p-6">
+                  <item.icon className="h-8 w-8 text-[#ea4b00]" />
+                  <h3 className="mt-4 text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-white/65 leading-relaxed">{item.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
 
-.accordion-button {
-  width: 100%;
-  border: none;
-  background: transparent;
-  color: var(--text-main);
-  padding: 22px 20px;
-  font-weight: 800;
-  font-size: 1.13rem;
-  letter-spacing: 0.2px;
-  line-height: 1.3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  cursor: pointer;
-  text-align: left;
-  transition: color 0.25s ease;
-}
+        <section id="team" className="max-w-7xl mx-auto px-6 py-20">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+            <div>
+              <p className="text-sm uppercase tracking-[0.25em] text-[#9ce7f2]">Our Team</p>
+              <h3 className="mt-3 text-3xl md:text-5xl font-bold">Six roles. One race-ready vision.</h3>
+            </div>
+            <p className="max-w-xl text-white/65 leading-relaxed">
+              Replace the placeholder names and bios below with your real team members, headshots, and achievements.
+            </p>
+          </div>
 
-.accordion-button:hover {
-  color: #ffe0ff;
-}
+          <div className="grid lg:grid-cols-[1.1fr_1.6fr] gap-6">
+            <Card className="rounded-[2rem] border-white/10 bg-white/5">
+              <CardContent className="p-4 md:p-5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-3">
+                  {teamMembers.map((member, index) => (
+                    <button
+                      key={member.name}
+                      onClick={() => setActiveMember(index)}
+                      className={`rounded-[1.25rem] border p-4 text-left transition-all ${
+                        activeMember === index
+                          ? "border-[#ea4b00] bg-[#ea4b00]/10 shadow-lg shadow-[#ea4b00]/10"
+                          : "border-white/10 bg-white/5 hover:bg-white/10"
+                      }`}
+                    >
+                      <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#0c7d8f] to-[#123563] mb-4 flex items-center justify-center text-lg font-bold">
+                        {index + 1}
+                      </div>
+                      <p className="font-semibold">{member.name}</p>
+                      <p className="text-sm text-white/55 mt-1">{member.role}</p>
+                    </button>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
 
-.accordion-item.active .accordion-button {
-  color: #ffe0ff;
-}
+            <motion.div
+              key={activeMember}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+            >
+              <Card className="h-full rounded-[2rem] border-white/10 bg-gradient-to-br from-white/8 to-white/5 shadow-2xl">
+                <CardContent className="p-8 md:p-10 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-4">
+                      <div className="h-20 w-20 rounded-[1.5rem] bg-gradient-to-br from-[#ea4b00] to-[#0c7d8f] flex items-center justify-center text-2xl font-black">
+                        {activeMember + 1}
+                      </div>
+                      <div>
+                        <p className="text-sm uppercase tracking-[0.2em] text-[#9ce7f2]">Team Member</p>
+                        <h4 className="text-3xl font-bold mt-1">{teamMembers[activeMember].name}</h4>
+                        <p className="text-lg text-[#ff8b5c] mt-1">{teamMembers[activeMember].role}</p>
+                      </div>
+                    </div>
 
-.icon {
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-  font-size: 1.2rem;
-  line-height: 1;
-}
+                    <p className="mt-8 text-white/70 text-lg leading-relaxed max-w-2xl">
+                      {teamMembers[activeMember].bio}
+                    </p>
+                  </div>
 
-.accordion-item.active .icon {
-  transform: rotate(45deg);
-}
+                  <div className="mt-10 grid sm:grid-cols-3 gap-4">
+                    {[
+                      "Add photo",
+                      "Add achievements",
+                      "Add responsibilities",
+                    ].map((item) => (
+                      <div key={item} className="rounded-2xl border border-white/10 bg-[#08101a] p-4 text-white/65">
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </section>
 
-/* CONTENT */
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-}
+        <section id="car" className="max-w-7xl mx-auto px-6 py-20">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.25em] text-[#9ce7f2]">The Car</p>
+              <h3 className="mt-3 text-3xl md:text-5xl font-bold">Designed to look sharp and move fast.</h3>
+              <p className="mt-6 text-white/68 text-lg leading-relaxed">
+                This section is ready for your car name, performance goals, renders, technical drawings, and final build
+                photography. You can also add dimensions, materials, aerodynamic choices, and race-day strategy.
+              </p>
 
-.accordion-content.show {
-  max-height: 800px;
-  opacity: 1;
-}
+              <div className="mt-8 space-y-4">
+                {[
+                  "Car name and concept story",
+                  "Aerodynamic features and design priorities",
+                  "Materials, manufacturing, and testing notes",
+                  "Final images or CAD renders",
+                ].map((point) => (
+                  <div key={point} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-[#ea4b00] shrink-0" />
+                    <p className="text-white/75">{point}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-.accordion-content p {
-  padding: 0 20px 20px;
-  color: var(--text-soft);
-  line-height: 1.78;
-  font-size: 0.98rem;
-}
+            <Card className="rounded-[2rem] border-white/10 bg-white/5 overflow-hidden shadow-2xl">
+              <CardContent className="p-0">
+                <div className="aspect-[4/3] bg-[linear-gradient(140deg,#0c7d8f_0%,#123563_45%,#07111c_100%)] p-8 flex items-end">
+                  <div className="w-full rounded-[1.5rem] border border-white/10 bg-black/20 backdrop-blur-md p-6">
+                    <p className="text-sm uppercase tracking-[0.2em] text-white/60">Featured Slot</p>
+                    <h4 className="mt-3 text-2xl font-bold">Your car render / photo here</h4>
+                    <p className="mt-3 text-white/70 leading-relaxed">
+                      Swap this panel for a high-quality render, an animated model, or competition photography.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  margin-top: 18px;
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  padding-bottom: 8px;
-}
+        <section id="process" className="max-w-7xl mx-auto px-6 py-20">
+          <div className="mb-12">
+            <p className="text-sm uppercase tracking-[0.25em] text-[#9ce7f2]">Creative Process</p>
+            <h3 className="mt-3 text-3xl md:text-5xl font-bold">From sketch to starting line.</h3>
+            <p className="mt-5 max-w-3xl text-white/65 text-lg leading-relaxed">
+              Judges usually want to see how your final outcome developed. This timeline gives you a strong structure for
+              documenting research, design changes, testing, setbacks, and final improvements.
+            </p>
+          </div>
 
-/* MOBILE */
-@media (max-width: 640px) {
-  .container {
-    width: min(100% - 14px, 760px);
-    padding: 12px 0 22px;
-  }
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+              >
+                <Card className="h-full rounded-[1.75rem] border-white/10 bg-white/5 hover:bg-white/8 transition-colors">
+                  <CardContent className="p-6 h-full flex flex-col">
+                    <div className="flex items-center justify-between">
+                      <step.icon className="h-8 w-8 text-[#ea4b00]" />
+                      <span className="text-sm text-white/40">0{index + 1}</span>
+                    </div>
+                    <h4 className="mt-6 text-2xl font-semibold">{step.title}</h4>
+                    <p className="mt-4 text-white/65 leading-relaxed flex-1">{step.text}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-  .hero {
-    padding: 34px 16px 28px;
-    margin-bottom: 20px;
-    border-radius: 22px;
-  }
+        <section className="max-w-7xl mx-auto px-6 pb-20">
+          <Card className="rounded-[2rem] border-white/10 bg-gradient-to-r from-[#ea4b00]/15 via-[#0c7d8f]/10 to-[#123563]/15 shadow-2xl">
+            <CardContent className="p-8 md:p-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+              <div>
+                <p className="text-sm uppercase tracking-[0.2em] text-[#9ce7f2]">Why this design works</p>
+                <h3 className="mt-3 text-3xl md:text-4xl font-bold">Fast, clean, and easy to customise.</h3>
+                <p className="mt-5 text-white/70 text-lg leading-relaxed">
+                  This layout already gives you a polished competition-style website. It is responsive, visually bold,
+                  and structured around exactly what a STEM Racing team needs to present.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  "Responsive on phone and desktop",
+                  "Animated but lightweight",
+                  "Colour palette matched to your branding",
+                  "Easy to replace placeholders with real content",
+                ].map((item) => (
+                  <div key={item} className="rounded-2xl border border-white/10 bg-black/20 p-4 text-white/80">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
 
-  .hero h1 {
-    font-size: clamp(2.1rem, 10vw, 3rem);
-  }
+        <section id="contact" className="max-w-7xl mx-auto px-6 pb-24">
+          <Card className="rounded-[2rem] border-white/10 bg-white/5 shadow-2xl overflow-hidden">
+            <CardContent className="p-0 grid lg:grid-cols-2">
+              <div className="p-8 md:p-10">
+                <p className="text-sm uppercase tracking-[0.25em] text-[#9ce7f2]">Contact / Sponsors</p>
+                <h3 className="mt-3 text-3xl md:text-4xl font-bold">Build your network around the team.</h3>
+                <p className="mt-5 text-white/68 leading-relaxed text-lg">
+                  Use this space for sponsor outreach, school information, social media, and a simple contact form.
+                </p>
 
-  .hero p {
-    font-size: 0.96rem;
-    line-height: 1.55;
-  }
+                <div className="mt-8 space-y-4 text-white/75">
+                  <div className="flex items-center gap-3"><Mail className="h-5 w-5 text-[#ea4b00]" /> team@email.com</div>
+                  <div className="flex items-center gap-3"><Instagram className="h-5 w-5 text-[#ea4b00]" /> @falcondynamics26</div>
+                </div>
+              </div>
 
-  .section-heading {
-    margin: 0 2px 12px;
-    gap: 10px;
-  }
-
-  .section-heading h2 {
-    font-size: 1.02rem;
-  }
-
-  .accordion-item {
-    border-radius: 18px;
-    margin-bottom: 12px;
-  }
-
-  .accordion-button {
-    padding: 18px 15px;
-    font-size: 1.02rem;
-    line-height: 1.28;
-    align-items: flex-start;
-  }
-
-  .icon {
-    margin-top: 2px;
-  }
-
-  .accordion-content p {
-    padding: 0 15px 18px;
-    font-size: 0.93rem;
-    line-height: 1.72;
-  }
-
-  .footer {
-    font-size: 0.84rem;
-    margin-top: 14px;
-  }
-}
-</style>
-</head>
-
-<body>
-<div class="bg-glow"></div>
-
-<div class="container">
-
-  <div class="hero">
-    <h1>Ksenia Kasparek</h1>
-    <p>Kandydatka na Rzecznika Praw Ucznia</p>
-  </div>
-
-  <div class="section-heading">
-    <h2>Informacje</h2>
-    <div class="line"></div>
-  </div>
-
-  <!-- O MNIE -->
-  <div class="accordion-item">
-    <button class="accordion-button" onclick="toggleAccordion(this)">
-      O mnie <span class="icon">+</span>
-    </button>
-    <div class="accordion-content">
-      <p>
-        Jestem uczennicą w Pre-DP2, rozszerzam matematykę, fizykę i informatykę. Angażuję się w organizację projektów takich jak JASMUN i F1 in Schools — co dało mi sporo praktyki w planowaniu, komunikacji i pracy pod presją czasu.
-      </p>
+              <div className="p-8 md:p-10 bg-[#08101a] border-t lg:border-t-0 lg:border-l border-white/10">
+                <div className="space-y-4">
+                  <Input placeholder="Your name" className="h-12 rounded-xl border-white/10 bg-white/5 text-white placeholder:text-white/35" />
+                  <Input placeholder="Your email" className="h-12 rounded-xl border-white/10 bg-white/5 text-white placeholder:text-white/35" />
+                  <Input placeholder="Message topic" className="h-12 rounded-xl border-white/10 bg-white/5 text-white placeholder:text-white/35" />
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-4 min-h-32 text-white/35">Message</div>
+                  <Button className="w-full h-12 rounded-xl bg-[#ea4b00] hover:bg-[#d54400] text-white">
+                    Send Inquiry
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+      </main>
     </div>
-  </div>
-
-  <!-- 1 -->
-  <div class="accordion-item">
-    <button class="accordion-button" onclick="toggleAccordion(this)">
-      Dlaczego chcę zostać Rzecznikiem? <span class="icon">+</span>
-    </button>
-    <div class="accordion-content">
-      <p>
-       Kandyduję, bo widzę, że uczniowie często nie wiedzą, do kogo się zwrócić. Staram się patrzeć na sytuacje z różnych perspektyw i szukać rozwiązań, które są sprawiedliwe dla wszystkich stron. Ważne jest dla mnie, żeby każdy uczeń czuł, że ma w szkole wsparcie i że jego głos się liczy. Chcę być osobą, do której można podejść bez stresu i spokojnie porozmawiać.
-      </p>
-    </div>
-  </div>
-
-  <!-- 2 -->
-  <div class="accordion-item">
-    <button class="accordion-button" onclick="toggleAccordion(this)">
-      Dlaczego uważam, że będę dobrym rzecznikiem? <span class="icon">+</span>
-    </button>
-    <div class="accordion-content">
-      <p>
-        Myślę, że dobry rzecznik to ktoś, kto potrafi rozmawiać nie tylko z uczniami, ale i z nauczycielami. Chcę być osobą, do której każdy będzie mógł się zwrócić bez obawy, że zostanie zignorowany czy wyśmiany. Sama byłam w sytuacjach, kiedy uważałam, że coś nie jest fair, ale nie wiedziałam do kogo pójść. Właśnie dlatego chcę być Rzecznikiem, do którego można przyjsć bez strachu.
-      </p>
-    </div>
-  </div>
-
-  <!-- 3 -->
-  <div class="accordion-item">
-    <button class="accordion-button" onclick="toggleAccordion(this)">
-      Jak postąpiłabym w tej sytuacji? <span class="icon">+</span>
-    </button>
-    <div class="accordion-content">
-      <p>
-        Poszkodowana dziewczyna „B” znajduje mnie na korytarzu i prosi, żebym nie broniła „A” na komisji.<br><br>
-        Na początku wysłuchałabym uczennicy „B” i okazała jej wsparcie, żeby czuła, że jej sytuacja jest ważna. Wyjaśniłabym jednak, że jako Rzecznik muszę pozostać bezstronna, dlatego nie mogę odmówić wysłuchania drugiej strony. Skontaktowałabym się też z uczennicą „A”, żeby poznać jej punkt widzenia, a potem zebrałabym wszystkie informacje, starając się patrzeć na sprawę obiektywnie.
-        <br><br>
-        Podczas komisji upewniłabym się, że każda ze stron miała szansę się wypowiedzieć i została potraktowana uczciwie. Moją rolą nie byłoby stanięcie się po którejś stronie, tylko dopilnowanie, żeby decyzja była sprawiedliwa i oparta na faktach.
-      </p>
-    </div>
-  </div>
-
-  <!-- 4 -->
-  <div class="accordion-item">
-    <button class="accordion-button" onclick="toggleAccordion(this)">
-      Co chcę zmienić jako Rzecznik Praw Ucznia? <span class="icon">+</span>
-    </button>
-    <div class="accordion-content">
-      <p>
-        Chciałabym wprowadzić łatwiejszy i bardziej dostępny kontakt uczniów z rzecznikiem.
-        <br><br>
-        Zależy mi też na tym, żeby uczniowie lepiej rozumieli swoje prawa i wiedzieli, gdzie mogą szukać pomocy w trudnych sytuacjach.
-        Chciałabym, żeby rola rzecznika była widoczna i rzeczywiście pomocna.
-      </p>
-    </div>
-  </div>
-
-  <div class="footer">
-    Ksenia Kasparek • Rzecznik Praw Ucznia
-  </div>
-
-</div>
-
-<script>
-function toggleAccordion(button){
-  const item = button.parentElement;
-  const content = button.nextElementSibling;
-  const isOpen = content.classList.contains("show");
-
-  document.querySelectorAll(".accordion-item").forEach(el => el.classList.remove("active"));
-  document.querySelectorAll(".accordion-content").forEach(el => el.classList.remove("show"));
-
-  if(!isOpen){
-    item.classList.add("active");
-    content.classList.add("show");
-  }
-}
-</script>
-
-</body>
-</html>
+  );
