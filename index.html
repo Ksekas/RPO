@@ -6,11 +6,13 @@
   <title>Falcon Dynamics | STEM Racing</title>
   <style>
     :root {
-      --orange: #ff7a18;
-      --orange-soft: #ffb169;
-      --blue: #062b3f;
-      --blue-light: #0e526f;
-      --dark: #03141f;
+      /* Falcon Dynamics logo colours */
+      --orange: #dc3500;
+      --orange-soft: #ff5a1f;
+      --blue: #007f89;
+      --blue-light: #0097a3;
+      --navy: #001428;
+      --dark: #02070d;
       --text: #eef8fb;
       --muted: #a9c6d1;
       --card: rgba(255, 255, 255, 0.08);
@@ -26,7 +28,7 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top left, #12445f 0%, var(--dark) 45%, #01080d 100%);
+      background: radial-gradient(circle at top left, var(--blue) 0%, var(--navy) 42%, var(--dark) 100%);
       color: var(--text);
       overflow-x: hidden;
     }
@@ -49,7 +51,7 @@
       top: 0;
       z-index: 10;
       backdrop-filter: blur(18px);
-      background: rgba(3, 20, 31, 0.72);
+      background: rgba(0, 20, 40, 0.78);
       border-bottom: 1px solid var(--border);
     }
 
@@ -149,7 +151,7 @@
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, var(--orange), #ff9d3d);
+      background: linear-gradient(135deg, var(--orange), var(--orange-soft));
       color: #07131a;
       font-weight: 800;
       box-shadow: 0 0 35px rgba(255, 122, 24, 0.28);
@@ -187,7 +189,7 @@
       right: 10%;
       top: 43%;
       height: 70px;
-      background: linear-gradient(90deg, var(--orange), #ffc078);
+      background: linear-gradient(90deg, var(--orange), var(--orange-soft));
       clip-path: polygon(0 60%, 16% 25%, 60% 12%, 88% 28%, 100% 60%, 94% 82%, 8% 82%);
       filter: drop-shadow(0 0 28px rgba(255,122,24,0.55));
       animation: float 3s ease-in-out infinite;
@@ -279,7 +281,7 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange), var(--blue-light));
+      background: linear-gradient(135deg, var(--orange), var(--blue));
       margin-bottom: 18px;
       display: grid;
       place-items: center;
