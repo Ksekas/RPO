@@ -459,33 +459,20 @@
   <script>
     const revealElements = document.querySelectorAll('.reveal');
 
-    function revealOnScroll() {
-      const windowHeight = window.innerHeight;
-
-      revealElements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
-          element.classList.add('active');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
         }
       });
-    }
-      });
-    }
-      });
-    }
-
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          revealOnScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
+    }, {
+      threshold: 0.12
     });
-    window.addEventListener('load', revealOnScroll);
+
+    revealElements.forEach((element) => {
+      observer.observe(element);
+    });
   </script>
 </body>
 </html>
