@@ -6,17 +6,17 @@
   <title>Falcon Dynamics | STEM Racing</title>
   <style>
     :root {
-      /* Falcon Dynamics logo colours */
-      --orange: #dc3500;
-      --orange-soft: #ff5a1f;
-      --blue: #007f89;
-      --blue-light: #0097a3;
-      --navy: #001428;
-      --dark: #02070d;
-      --text: #eef8fb;
-      --muted: #a9c6d1;
-      --card: rgba(255, 255, 255, 0.08);
-      --border: rgba(255, 255, 255, 0.16);
+      /* Professional, toned-down palette */
+      --orange: #e25a2c;          /* accent only */
+      --orange-soft: #f08a64;
+      --blue: #0f3a4a;            /* primary base */
+      --blue-light: #1c5c70;
+      --navy: #081a24;
+      --dark: #050c12;
+      --text: #e6f0f4;
+      --muted: #8faab5;
+      --card: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
     }
 
     * {
@@ -124,7 +124,7 @@
 
     h1 span {
       color: var(--orange);
-      text-shadow: 0 0 35px rgba(255, 122, 24, 0.45);
+      text-shadow: none;
     }
 
     .hero p {
@@ -151,10 +151,10 @@
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, var(--orange), var(--orange-soft));
-      color: #07131a;
-      font-weight: 800;
-      box-shadow: 0 0 35px rgba(255, 122, 24, 0.28);
+      background: var(--orange);
+      color: white;
+      font-weight: 700;
+      box-shadow: none;
     }
 
     .btn:hover {
@@ -175,12 +175,11 @@
     .car-card::before {
       content: "";
       position: absolute;
-      width: 380px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(255,122,24,0.42), transparent 62%);
-      right: -110px;
-      top: -120px;
-      animation: pulse 4s infinite alternate;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(226,90,44,0.2), transparent 70%);
+      right: -100px;
+      top: -100px;
     }
 
     .car-shape {
@@ -188,11 +187,11 @@
       left: 10%;
       right: 10%;
       top: 43%;
-      height: 70px;
-      background: linear-gradient(90deg, var(--orange), var(--orange-soft));
+      height: 60px;
+      background: var(--orange);
       clip-path: polygon(0 60%, 16% 25%, 60% 12%, 88% 28%, 100% 60%, 94% 82%, 8% 82%);
-      filter: drop-shadow(0 0 28px rgba(255,122,24,0.55));
-      animation: float 3s ease-in-out infinite;
+      filter: none;
+      opacity: 0.9;
     }
 
     .wheel {
@@ -232,11 +231,9 @@
     .card {
       border: 1px solid var(--border);
       background: var(--card);
-      border-radius: 26px;
-      padding: 28px;
-      transition: 0.35s ease;
-      position: relative;
-      overflow: hidden;
+      border-radius: 20px;
+      padding: 26px;
+      transition: 0.25s ease;
     }
 
     .card::after {
@@ -250,8 +247,8 @@
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .card:hover::after { transform: translateX(0); }
