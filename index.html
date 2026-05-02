@@ -6,52 +6,31 @@
   <title>Falcon Dynamics | STEM Racing</title>
   <style>
     :root {
-      /* Professional, toned-down palette */
-      --orange: #e25a2c;          /* accent only */
+      --orange: #e25a2c;
       --orange-soft: #f08a64;
-      --blue: #0f3a4a;            /* primary base */
+      --blue: #0f3a4a;
       --blue-light: #1c5c70;
       --navy: #081a24;
       --dark: #050c12;
       --text: #e6f0f4;
       --muted: #8faab5;
-      --card: rgba(255, 255, 255, 0.04);
-      --border: rgba(255, 255, 255, 0.08);
+      --card: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.1);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top left, var(--blue) 0%, var(--navy) 42%, var(--dark) 100%);
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--navy), var(--dark));
       color: var(--text);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 45px 45px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-      pointer-events: none;
-      z-index: -1;
     }
 
     header {
       position: fixed;
       width: 100%;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(18px);
-      background: rgba(0, 20, 40, 0.78);
+      background: rgba(5,12,18,0.85);
       border-bottom: 1px solid var(--border);
     }
 
@@ -64,291 +43,79 @@
       align-items: center;
     }
 
-    .logo {
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: var(--orange);
-      text-transform: uppercase;
-    }
+    .logo { font-weight:700; color: var(--orange); }
 
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
+    .nav-links { display:flex; gap:24px; list-style:none; }
+    .nav-links a { color:var(--muted); text-decoration:none; }
+    .nav-links a:hover { color:var(--orange); }
 
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.95rem;
-      opacity: 0.85;
-      transition: 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--orange);
-      opacity: 1;
-    }
-
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 95px 28px;
-    }
+    section { max-width:1200px; margin:auto; padding:100px 28px; }
 
     .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 48px;
-      padding-top: 140px;
-    }
-
-    .tagline {
-      display: inline-block;
-      color: var(--orange-soft);
-      border: 1px solid rgba(255, 122, 24, 0.5);
-      border-radius: 999px;
-      padding: 8px 15px;
-      margin-bottom: 22px;
-      background: rgba(255, 122, 24, 0.08);
+      text-align:left;
+      padding-top:140px;
     }
 
     h1 {
-      font-size: clamp(3rem, 8vw, 6.8rem);
-      line-height: 0.92;
-      text-transform: uppercase;
-      margin-bottom: 24px;
+      font-size: clamp(3rem, 7vw, 5rem);
+      margin-bottom:20px;
     }
 
-    h1 span {
-      color: var(--orange);
-      text-shadow: none;
-    }
+    .hero p { color:var(--muted); max-width:600px; }
 
-    .hero p {
-      color: var(--muted);
-      font-size: 1.15rem;
-      line-height: 1.7;
-      max-width: 650px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 16px;
-      margin-top: 34px;
-      flex-wrap: wrap;
-    }
+    .buttons { margin-top:30px; display:flex; gap:14px; }
 
     .btn {
-      padding: 14px 22px;
-      border-radius: 14px;
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid var(--border);
-      transition: 0.3s ease;
+      padding:12px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      border:1px solid var(--border);
+      color:var(--text);
     }
 
     .btn.primary {
       background: var(--orange);
-      color: white;
-      font-weight: 700;
-      box-shadow: none;
+      border:none;
+      color:white;
     }
 
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-    }
-
-    .car-card {
-      min-height: 380px;
-      border: 1px solid var(--border);
-      border-radius: 34px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.035));
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 30px 90px rgba(0,0,0,0.35);
-    }
-
-    .car-card::before {
-      content: "";
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(226,90,44,0.2), transparent 70%);
-      right: -100px;
-      top: -100px;
-    }
-
-    .car-shape {
-      position: absolute;
-      left: 10%;
-      right: 10%;
-      top: 43%;
-      height: 60px;
-      background: var(--orange);
-      clip-path: polygon(0 60%, 16% 25%, 60% 12%, 88% 28%, 100% 60%, 94% 82%, 8% 82%);
-      filter: none;
-      opacity: 0.9;
-    }
-
-    .wheel {
-      position: absolute;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      border: 9px solid #061d2a;
-      background: var(--orange-soft);
-      top: calc(43% + 55px);
-    }
-
-    .wheel.one { left: 22%; }
-    .wheel.two { right: 22%; }
+    .btn:hover { opacity:0.85; }
 
     .section-title {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      margin-bottom: 16px;
-      text-transform: uppercase;
+      font-size:2.5rem;
+      margin-bottom:12px;
     }
 
-    .section-title span { color: var(--orange); }
+    .section-intro { color:var(--muted); margin-bottom:30px; }
 
-    .section-intro {
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 760px;
-      margin-bottom: 42px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+    .grid, .team-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
     }
 
     .card {
-      border: 1px solid var(--border);
-      background: var(--card);
-      border-radius: 20px;
-      padding: 26px;
-      transition: 0.25s ease;
+      border:1px solid var(--border);
+      padding:24px;
+      border-radius:16px;
+      background:var(--card);
     }
 
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--orange), transparent);
-      transform: translateX(-100%);
-      transition: 0.5s ease;
-    }
+    .card h3 { color:var(--orange-soft); margin-bottom:10px; }
+    .card p { color:var(--muted); }
 
-    .card:hover {
-      transform: translateY(-4px);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .card:hover::after { transform: translateX(0); }
-
-    .card h3 {
-      color: var(--orange-soft);
-      margin-bottom: 12px;
-      font-size: 1.35rem;
-    }
-
-    .card p {
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .member {
-      min-height: 220px;
-    }
-
-    .member .avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange), var(--blue));
-      margin-bottom: 18px;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      color: white;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .stat {
-      text-align: center;
-      padding: 28px 16px;
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--orange);
-      font-size: 2.2rem;
-      margin-bottom: 8px;
-    }
+    .team-grid .card { min-height:200px; }
 
     footer {
-      text-align: center;
-      padding: 42px 20px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      background: rgba(0,0,0,0.18);
+      text-align:center;
+      padding:30px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      will-change: opacity, transform;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-18px); }
-    }
-
-    @keyframes pulse {
-      from { opacity: 0.45; transform: scale(0.9); }
-      to { opacity: 0.95; transform: scale(1.08); }
-    }
-
-    @media (max-width: 900px) {
-      .hero,
-      .grid,
-      .team-grid,
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      section {
-        padding: 75px 22px;
-      }
+    @media(max-width:900px){
+      .grid, .team-grid { grid-template-columns:1fr; }
+      .nav-links { display:none; }
     }
   </style>
 </head>
