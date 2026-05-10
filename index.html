@@ -3,207 +3,271 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Falcon Dynamics — STEM Racing team combining engineering, design, and data analysis to build a fast and efficient racing car." />
-  <title>Falcon Dynamics | STEM Racing</title>
+  <meta name="description" content="Falcon Dynamics — STEM Racing team. Engineering, aerodynamics, telemetry." />
+  <title>Falcon Dynamics // STEM Racing</title>
 
-  <!-- Distinctive font pairing: Space Grotesk (display) + JetBrains Mono (accents) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Archivo:wght@400;600;800;900&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- =========================  HEADER  ========================= -->
-  <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#top" class="nav__logo">
-        <span class="nav__logo-mark">◆</span>
-        Falcon Dynamics
-      </a>
-
-      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+  <!-- =========================  TOP BAR  ========================= -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <span class="topbar__mark">◣</span>
+      <span class="topbar__name">FALCON DYNAMICS</span>
+      <span class="topbar__id">// TEAM.ID 0001</span>
+    </div>
+    <div class="topbar__right">
+      <span class="topbar__status"><span class="dot"></span> SYSTEM ONLINE</span>
+      <button class="topbar__toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-
-      <ul class="nav__links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#car">The Car</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#sponsors">Sponsors</a></li>
-      </ul>
-    </nav>
+    </div>
   </header>
 
-  <main id="top">
+  <nav class="sidenav" aria-label="Main">
+    <a href="#about">01 / About</a>
+    <a href="#car">02 / Vehicle</a>
+    <a href="#team">03 / Crew</a>
+    <a href="#sponsors">04 / Sponsors</a>
+  </nav>
+
+  <main>
 
     <!-- =========================  HERO  ========================= -->
     <section class="hero">
-      <div class="hero__content reveal">
-        <span class="tagline">
-          <span class="tagline__dot"></span>
-          STEM Racing Team · Season 2026
-        </span>
+      <div class="hero__meta">
+        <span class="meta-line">SECTOR.01</span>
+        <span class="meta-line">SEASON / 2026</span>
+        <span class="meta-line">N 52°13′ E 21°00′</span>
+      </div>
 
-        <h1 class="hero__title">
-          Falcon
-          <span class="hero__title-accent">Dynamics</span>
-        </h1>
+      <h1 class="hero__title">
+        <span class="hero__title-row">FALCON</span>
+        <span class="hero__title-row hero__title-row--orange">DYNAMICS<span class="hero__caret">_</span></span>
+      </h1>
 
-        <p class="hero__lead">
-          A six-person STEM Racing team combining engineering, design,
-          marketing, and data analysis to build a fast, efficient,
-          and professional racing project.
-        </p>
-
-        <div class="buttons">
-          <a href="#about" class="btn btn--primary">Explore the Project</a>
-          <a href="#team" class="btn">Meet the Team</a>
+      <div class="hero__readout">
+        <div class="readout-block">
+          <span class="readout-block__label">CLASSIFICATION</span>
+          <span class="readout-block__value">STEM RACING / F1 IN SCHOOLS</span>
+        </div>
+        <div class="readout-block">
+          <span class="readout-block__label">CREW</span>
+          <span class="readout-block__value">06 ENGINEERS</span>
+        </div>
+        <div class="readout-block">
+          <span class="readout-block__label">DISCIPLINE</span>
+          <span class="readout-block__value">AERO / CAD / CFD / MFG</span>
+        </div>
+        <div class="readout-block">
+          <span class="readout-block__label">STATUS</span>
+          <span class="readout-block__value readout-block__value--live">
+            <span class="dot dot--orange"></span> ACTIVE BUILD
+          </span>
         </div>
       </div>
 
-      <div class="hero__visual reveal" aria-hidden="true">
-        <div class="car-stage">
-          <div class="car-stage__glow"></div>
-          <div class="car-stage__grid"></div>
-          <svg class="car-illustration" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
-            <!-- Car body -->
-            <path d="M 30 120 L 70 80 L 140 60 Q 200 50 270 65 L 340 90 L 370 120 L 360 135 L 40 135 Z"
-                  fill="var(--orange)" />
-            <!-- Cockpit cutout -->
-            <path d="M 150 75 Q 200 65 250 78 L 240 95 L 160 95 Z"
-                  fill="var(--navy)" opacity="0.6" />
-            <!-- Front wing -->
-            <rect x="320" y="115" width="50" height="6" fill="var(--orange-soft)" />
-            <!-- Rear wing -->
-            <rect x="30" y="95" width="50" height="6" fill="var(--orange-soft)" />
-            <rect x="38" y="95" width="3" height="25" fill="var(--orange-soft)" />
-            <rect x="68" y="95" width="3" height="25" fill="var(--orange-soft)" />
-            <!-- Wheels -->
-            <circle cx="100" cy="135" r="22" fill="#0a1620" stroke="#d9e0e3" stroke-width="6" />
-            <circle cx="100" cy="135" r="6" fill="#d9e0e3" />
-            <circle cx="300" cy="135" r="22" fill="#0a1620" stroke="#d9e0e3" stroke-width="6" />
-            <circle cx="300" cy="135" r="6" fill="#d9e0e3" />
-          </svg>
-        </div>
+      <p class="hero__lead">
+        A six-person engineering crew designing, manufacturing, and testing
+        a CO₂-powered race car. We treat every panel, every gram, and every
+        millimetre as a measurable variable.
+      </p>
+
+      <div class="hero__cta">
+        <a href="#about" class="btn btn--primary">→ ENTER PROJECT</a>
+        <a href="#team" class="btn">VIEW CREW</a>
+      </div>
+
+      <!-- Side rail with axis ticks -->
+      <div class="axis-rail" aria-hidden="true">
+        <span>00</span><span>10</span><span>20</span><span>30</span>
+        <span>40</span><span>50</span><span>60</span><span>70</span>
       </div>
     </section>
+
 
     <!-- =========================  ABOUT  ========================= -->
-    <section id="about" class="section">
-      <header class="section__header reveal">
-        <span class="section__eyebrow">01 / About</span>
-        <h2 class="section__title">About <span class="accent">Our Project</span></h2>
-        <p class="section__intro">
-          Falcon Dynamics is built around the idea that a successful STEM Racing
-          team needs more than speed. Our project combines aerodynamic thinking,
-          technical design, branding, research, manufacturing, and presentation skills.
-        </p>
-      </header>
-
-      <div class="grid grid--3 reveal">
-        <article class="card">
-          <span class="card__number">01</span>
-          <h3 class="card__title">Engineering</h3>
-          <p>Car design, aerodynamic features, testing process, materials, and improvements made after iterative feedback.</p>
-        </article>
-        <article class="card">
-          <span class="card__number">02</span>
-          <h3 class="card__title">Technology</h3>
-          <p>The tools we use — CAD software, CFD simulations, data analysis, web design, graphics, and project management.</p>
-        </article>
-        <article class="card">
-          <span class="card__number">03</span>
-          <h3 class="card__title">Teamwork</h3>
-          <p>How six members divide responsibilities across design, engineering, marketing, finance, and presentation.</p>
-        </article>
+    <section id="about" class="block">
+      <div class="block__header">
+        <span class="block__index">01</span>
+        <div>
+          <h2 class="block__title">PROJECT BRIEF</h2>
+          <p class="block__sub">/ MISSION PARAMETERS</p>
+        </div>
       </div>
-    </section>
 
-    <!-- =========================  THE CAR  ========================= -->
-    <section id="car" class="section">
-      <header class="section__header reveal">
-        <span class="section__eyebrow">02 / The Car</span>
-        <h2 class="section__title">The <span class="accent">Car</span></h2>
-        <p class="section__intro">
-          Body shape, aerodynamic decisions, weight reduction, manufacturing
-          process, testing results, and future improvements. This section is
-          ideal for CAD renders, sketches, photos, or performance data.
+      <div class="brief">
+        <p class="brief__lead">
+          Falcon Dynamics is built around the idea that a successful STEM
+          Racing team needs more than speed. We combine aerodynamic thinking,
+          technical design, branding, research, manufacturing, and presentation.
         </p>
-      </header>
 
-      <div class="stats reveal">
-        <div class="stat">
-          <strong class="stat__value">6</strong>
-          <span class="stat__label">Team Members</span>
-        </div>
-        <div class="stat">
-          <strong class="stat__value">CAD</strong>
-          <span class="stat__label">Design Process</span>
-        </div>
-        <div class="stat">
-          <strong class="stat__value">CFD</strong>
-          <span class="stat__label">Aero Simulation</span>
-        </div>
-        <div class="stat">
-          <strong class="stat__value">2026</strong>
-          <span class="stat__label">Season</span>
+        <div class="brief__grid">
+          <article class="cell">
+            <span class="cell__id">A.01</span>
+            <h3 class="cell__title">ENGINEERING</h3>
+            <p>Body design, aerodynamic features, materials selection, and iterative testing.</p>
+            <span class="cell__bar"></span>
+          </article>
+          <article class="cell">
+            <span class="cell__id">A.02</span>
+            <h3 class="cell__title">TECHNOLOGY</h3>
+            <p>CAD modelling, CFD simulation, data analysis, and digital project management.</p>
+            <span class="cell__bar"></span>
+          </article>
+          <article class="cell">
+            <span class="cell__id">A.03</span>
+            <h3 class="cell__title">TEAMWORK</h3>
+            <p>Six engineers across design, manufacturing, marketing, finance, and graphics.</p>
+            <span class="cell__bar"></span>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- =========================  TEAM  ========================= -->
-    <section id="team" class="section">
-      <header class="section__header reveal">
-        <span class="section__eyebrow">03 / Team</span>
-        <h2 class="section__title">Meet <span class="accent">The Team</span></h2>
-        <p class="section__intro">
-          Replace the placeholders below with the names, roles, and short
-          descriptions of each Falcon Dynamics member.
-        </p>
-      </header>
 
-      <!-- Team members are rendered from JS — easier to edit, no HTML duplication -->
-      <div class="grid grid--3 reveal" id="team-grid"></div>
+    <!-- =========================  VEHICLE  ========================= -->
+    <section id="car" class="block block--vehicle">
+      <div class="block__header">
+        <span class="block__index">02</span>
+        <div>
+          <h2 class="block__title">VEHICLE</h2>
+          <p class="block__sub">/ TECHNICAL READOUT</p>
+        </div>
+      </div>
+
+      <div class="vehicle">
+        <!-- Engineering blueprint of the car -->
+        <div class="blueprint">
+          <div class="blueprint__corners">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <svg class="blueprint__svg" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" aria-label="Vehicle side profile">
+            <defs>
+              <pattern id="bp-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(226,138,100,0.12)" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="800" height="280" fill="url(#bp-grid)"/>
+
+            <!-- Centerline -->
+            <line x1="0" y1="200" x2="800" y2="200" stroke="rgba(226,138,100,0.35)" stroke-width="1" stroke-dasharray="6 6"/>
+
+            <!-- Car silhouette -->
+            <path d="M 80 200 L 140 140 L 280 110 Q 400 95 560 115 L 680 150 L 740 200 Z"
+                  fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- Cockpit -->
+            <path d="M 300 130 Q 400 115 510 132 L 490 165 L 320 165 Z"
+                  fill="none" stroke="var(--orange)" stroke-width="1.5"/>
+            <!-- Rear wing -->
+            <line x1="60" y1="155" x2="120" y2="155" stroke="var(--orange)" stroke-width="2"/>
+            <line x1="68" y1="155" x2="68" y2="200" stroke="var(--orange)" stroke-width="1.5"/>
+            <line x1="112" y1="155" x2="112" y2="200" stroke="var(--orange)" stroke-width="1.5"/>
+            <!-- Front wing -->
+            <line x1="700" y1="195" x2="760" y2="195" stroke="var(--orange)" stroke-width="2"/>
+            <!-- Wheels -->
+            <circle cx="200" cy="200" r="32" fill="none" stroke="var(--orange)" stroke-width="2"/>
+            <circle cx="200" cy="200" r="8" fill="none" stroke="var(--orange)" stroke-width="1.5"/>
+            <line x1="168" y1="200" x2="232" y2="200" stroke="rgba(226,138,100,0.5)" stroke-width="1"/>
+            <line x1="200" y1="168" x2="200" y2="232" stroke="rgba(226,138,100,0.5)" stroke-width="1"/>
+            <circle cx="620" cy="200" r="32" fill="none" stroke="var(--orange)" stroke-width="2"/>
+            <circle cx="620" cy="200" r="8" fill="none" stroke="var(--orange)" stroke-width="1.5"/>
+            <line x1="588" y1="200" x2="652" y2="200" stroke="rgba(226,138,100,0.5)" stroke-width="1"/>
+            <line x1="620" y1="168" x2="620" y2="232" stroke="rgba(226,138,100,0.5)" stroke-width="1"/>
+
+            <!-- Dimension lines -->
+            <line x1="80" y1="245" x2="740" y2="245" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+            <line x1="80" y1="240" x2="80" y2="250" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+            <line x1="740" y1="240" x2="740" y2="250" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+            <text x="410" y="262" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono" font-size="11" text-anchor="middle">L = 210 mm (regulation max)</text>
+
+            <!-- Callouts -->
+            <text x="60" y="135" fill="var(--orange-soft)" font-family="JetBrains Mono" font-size="10">REAR WING</text>
+            <text x="700" y="178" fill="var(--orange-soft)" font-family="JetBrains Mono" font-size="10">F.WING</text>
+            <text x="380" y="100" fill="var(--orange-soft)" font-family="JetBrains Mono" font-size="10">BODY SHELL</text>
+          </svg>
+
+          <div class="blueprint__stamp">
+            <span>FD-2026 / REV.A</span>
+            <span>SHEET 01/04</span>
+          </div>
+        </div>
+
+        <!-- Spec readouts -->
+        <div class="spec-table">
+          <div class="spec-row"><span>LENGTH</span><strong>210 <small>mm max</small></strong></div>
+          <div class="spec-row"><span>MASS</span><strong>≥55 <small>g min</small></strong></div>
+          <div class="spec-row"><span>WHEELBASE</span><strong>≥120 <small>mm</small></strong></div>
+          <div class="spec-row"><span>BODY</span><strong>BALSA + CFRP <small>composite</small></strong></div>
+          <div class="spec-row"><span>FINISH</span><strong>2K CLEAR <small>over base</small></strong></div>
+          <div class="spec-row"><span>POWERPLANT</span><strong>CO₂ <small>8 g cartridge</small></strong></div>
+        </div>
+      </div>
     </section>
+
+
+    <!-- =========================  CREW  ========================= -->
+    <section id="team" class="block">
+      <div class="block__header">
+        <span class="block__index">03</span>
+        <div>
+          <h2 class="block__title">CREW</h2>
+          <p class="block__sub">/ ROLES & RESPONSIBILITIES</p>
+        </div>
+      </div>
+
+      <ol class="crew" id="crew-list"></ol>
+    </section>
+
 
     <!-- =========================  SPONSORS  ========================= -->
-    <section id="sponsors" class="section">
-      <header class="section__header reveal">
-        <span class="section__eyebrow">04 / Sponsors</span>
-        <h2 class="section__title">Sponsors & <span class="accent">Partners</span></h2>
-        <p class="section__intro">
-          Thank sponsors, show partner logos, and explain how their support
-          helps Falcon Dynamics develop the project.
-        </p>
-      </header>
+    <section id="sponsors" class="block">
+      <div class="block__header">
+        <span class="block__index">04</span>
+        <div>
+          <h2 class="block__title">SPONSORS & PARTNERS</h2>
+          <p class="block__sub">/ MAKING THIS POSSIBLE</p>
+        </div>
+      </div>
 
-      <div class="grid grid--3 reveal">
-        <article class="card card--sponsor">
-          <div class="card__logo-placeholder">LOGO</div>
-          <h3 class="card__title">Sponsor Name</h3>
-          <p>Add sponsor description, contribution, or logo here.</p>
-        </article>
-        <article class="card card--sponsor">
-          <div class="card__logo-placeholder">LOGO</div>
-          <h3 class="card__title">Sponsor Name</h3>
-          <p>Add sponsor description, contribution, or logo here.</p>
-        </article>
-        <article class="card card--sponsor">
-          <div class="card__logo-placeholder">LOGO</div>
-          <h3 class="card__title">Sponsor Name</h3>
-          <p>Add sponsor description, contribution, or logo here.</p>
-        </article>
+      <div class="sponsor-strip">
+        <div class="sponsor-slot">
+          <span class="sponsor-slot__id">P.01</span>
+          <div class="sponsor-slot__logo">LOGO</div>
+          <span class="sponsor-slot__name">Sponsor Name</span>
+        </div>
+        <div class="sponsor-slot">
+          <span class="sponsor-slot__id">P.02</span>
+          <div class="sponsor-slot__logo">LOGO</div>
+          <span class="sponsor-slot__name">Sponsor Name</span>
+        </div>
+        <div class="sponsor-slot">
+          <span class="sponsor-slot__id">P.03</span>
+          <div class="sponsor-slot__logo">LOGO</div>
+          <span class="sponsor-slot__name">Sponsor Name</span>
+        </div>
+        <div class="sponsor-slot">
+          <span class="sponsor-slot__id">P.04</span>
+          <div class="sponsor-slot__logo">LOGO</div>
+          <span class="sponsor-slot__name">Sponsor Name</span>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- =========================  FOOTER  ========================= -->
-  <footer class="site-footer">
-    <p>© 2026 Falcon Dynamics · STEM Racing Project</p>
+  <footer class="footer">
+    <div>© 2026 // FALCON DYNAMICS</div>
+    <div class="footer__line"></div>
+    <div>STEM RACING / TEAM PORTFOLIO / v1.0</div>
   </footer>
 
   <script src="script.js"></script>
