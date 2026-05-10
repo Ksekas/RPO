@@ -2,14 +2,13 @@
    FALCON DYNAMICS — SCRIPT
    ========================================================================== */
 
-/* Edit names and bios here — single source of truth */
 const CREW = [
-  { role: "TEAM MANAGER",          name: "Name Surname", bio: "Plans, deadlines, coordination, and project oversight." },
-  { role: "DESIGN ENGINEER",       name: "Name Surname", bio: "Body shape, CAD model, aerodynamic concept development." },
-  { role: "MANUFACTURING ENGINEER",name: "Name Surname", bio: "Production planning, materials, quality control." },
-  { role: "MARKETING MANAGER",     name: "Name Surname", bio: "Brand identity, social media, sponsor communication." },
-  { role: "GRAPHIC DESIGNER",      name: "Name Surname", bio: "Visual identity, presentations, posters, web graphics." },
-  { role: "RESOURCE MANAGER",      name: "Name Surname", bio: "Budgeting, resources, sponsor materials, portfolio." }
+  { role: "TEAM MANAGER",           name: "Name Surname", bio: "Plans, deadlines, coordination, and project oversight." },
+  { role: "DESIGN ENGINEER",        name: "Name Surname", bio: "Body shape, CAD model, aerodynamic concept development." },
+  { role: "MANUFACTURING ENGINEER", name: "Name Surname", bio: "Production planning, materials, quality control." },
+  { role: "MARKETING MANAGER",      name: "Name Surname", bio: "Brand identity, social media, sponsor communication." },
+  { role: "GRAPHIC DESIGNER",       name: "Name Surname", bio: "Visual identity, presentations, posters, web graphics." },
+  { role: "RESOURCE MANAGER",       name: "Name Surname", bio: "Budgeting, resources, sponsor materials, portfolio." }
 ];
 
 function renderCrew() {
@@ -29,7 +28,6 @@ function renderCrew() {
   `).join("");
 }
 
-/* Mobile menu — toggle the sidenav into view as a dropdown */
 function setupMobileMenu() {
   const toggle = document.querySelector(".topbar__toggle");
   const nav    = document.querySelector(".sidenav");
@@ -39,7 +37,6 @@ function setupMobileMenu() {
     const isOpen = nav.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(isOpen));
 
-    // On mobile, position it as an overlay panel
     if (isOpen) {
       Object.assign(nav.style, {
         display: "flex",
