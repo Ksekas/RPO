@@ -18,10 +18,6 @@
   --paper-dim:    #a5b6c2;
   --paper-faint:  #6a7e8e;
 
-  /* Type system:
-     - Display: Archivo (big titles, names, numbers)
-     - Body:    IBM Plex Sans (paragraphs, descriptions, sub-text)
-     - Mono:    JetBrains Mono (codes, IDs, labels — used sparingly) */
   --font-display: 'Archivo', system-ui, sans-serif;
   --font-body:    'IBM Plex Sans', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, monospace;
@@ -84,7 +80,6 @@ img,svg { display: block; max-width: 100%; }
 .topbar__id      { color: var(--paper-faint); }
 .topbar__status  { color: var(--paper-dim); display: flex; align-items: center; gap: 8px; }
 
-/* Static dot — no pulse animation */
 .dot {
   display: inline-block;
   width: 7px; height: 7px;
@@ -392,7 +387,7 @@ img,svg { display: block; max-width: 100%; }
 }
 
 
-/* -- PROCESS (design process timeline) --------------------------------- */
+/* -- PROCESS ------------------------------------------------------------ */
 .process__intro {
   font-family: var(--font-body);
   font-size: 1.1rem;
@@ -436,7 +431,6 @@ img,svg { display: block; max-width: 100%; }
   color: var(--orange);
 }
 
-/* Vertical line connecting the steps */
 .process__line {
   position: absolute;
   top: 70px;
@@ -572,6 +566,8 @@ img,svg { display: block; max-width: 100%; }
   text-align: center;
   border-right: 1px solid var(--navy-line);
   transition: background 0.25s;
+  display: flex;
+  flex-direction: column;
 }
 .sponsor-slot:last-child { border-right: none; }
 .sponsor-slot:hover { background: var(--navy-soft); }
@@ -585,10 +581,12 @@ img,svg { display: block; max-width: 100%; }
   color: var(--orange);
 }
 
+/* Empty placeholder slot */
 .sponsor-slot__logo {
-  display: grid;
-  place-items: center;
-  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
   margin: 18px 0 14px;
   border: 1px dashed var(--navy-line);
   font-family: var(--font-mono);
@@ -597,13 +595,32 @@ img,svg { display: block; max-width: 100%; }
   color: var(--paper-faint);
 }
 
+/* Slot containing a real logo image — overrides defaults */
+.sponsor-slot__logo--image {
+  background: white;
+  border: 1px solid var(--navy-line);
+  padding: 14px;
+  /* Override any inherited font/text styles */
+  font-size: 0;
+  letter-spacing: 0;
+}
+
+.sponsor-slot__logo--image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
 .sponsor-slot__name {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
+  margin-top: auto;
 }
-
 
 
 /* -- FOOTER ------------------------------------------------------------- */
