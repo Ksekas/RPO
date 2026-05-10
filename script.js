@@ -3,12 +3,12 @@
    ========================================================================== */
 
 const CREW = [
-  { role: "TEAM MANAGER",           name: "Name Surname", bio: "Plans, deadlines, coordination, and project oversight." },
-  { role: "DESIGN ENGINEER",        name: "Name Surname", bio: "Body shape, CAD model, aerodynamic concept development." },
-  { role: "MANUFACTURING ENGINEER", name: "Name Surname", bio: "Production planning, materials, quality control." },
-  { role: "MARKETING MANAGER",      name: "Name Surname", bio: "Brand identity, social media, sponsor communication." },
-  { role: "GRAPHIC DESIGNER",       name: "Name Surname", bio: "Visual identity, presentations, posters, web graphics." },
-  { role: "RESOURCE MANAGER",       name: "Name Surname", bio: "Budgeting, resources, sponsor materials, portfolio." }
+  { role: "TEAM MANAGER",           name: "Ksenia Kasparek", bio: "Plans, deadlines, coordination, and project oversight." },
+  { role: "DESIGN ENGINEER",        name: "Maria Chrzanowska", bio: "Body shape, CAD model, aerodynamic concept development." },
+  { role: "DESIGN ENGINEER",        name: "Eliza Siedlecka", bio: "Body shape, CAD model, aerodynamic concept development." },
+  { role: "TEST ENGINEER",      name: "Maciej Dziurnikowski", bio: "Test runs, data collection, and performance evaluation." },
+  { role: "BRAND AND PARTNERSHIPS MANAGER",       name: "Maksymilian Zięć", bio: "Visual identity, posters, and resources." },
+  { role: "MANUFACTURING ENGINEER",       name: "Nikita Yagnyatinskiy", bio: "Production planning, materials, quality control." }
 ];
 
 function renderCrew() {
