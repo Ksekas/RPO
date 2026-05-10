@@ -1,109 +1,75 @@
 /* ==========================================================================
    FALCON DYNAMICS — SCRIPT
-   1. Team data — easy to edit in one place
-   2. Renders team grid from data
-   3. Reveal-on-scroll using IntersectionObserver
-   4. Mobile menu toggle
    ========================================================================== */
 
-
-/* -- 1. Team data — edit names and descriptions here --------------------- */
-const TEAM = [
-  {
-    role: "Team Manager",
-    name: "Name Surname",
-    bio:  "Plans, deadlines, communication, and keeping the whole project organised."
-  },
-  {
-    role: "Design Engineer",
-    name: "Name Surname",
-    bio:  "Car shape, CAD model, aerodynamic ideas, and design development."
-  },
-  {
-    role: "Manufacturing Engineer",
-    name: "Name Surname",
-    bio:  "Production planning, materials, quality control, and practical construction."
-  },
-  {
-    role: "Marketing Manager",
-    name: "Name Surname",
-    bio:  "Brand identity, social media, promotion, and communication with sponsors."
-  },
-  {
-    role: "Graphic Designer",
-    name: "Name Surname",
-    bio:  "Visuals, logo use, presentation style, posters, and website graphics."
-  },
-  {
-    role: "Resource Manager",
-    name: "Name Surname",
-    bio:  "Budgeting, resources, sponsor materials, and project portfolio support."
-  }
+/* Edit names and bios here — single source of truth */
+const CREW = [
+  { role: "TEAM MANAGER",          name: "Name Surname", bio: "Plans, deadlines, coordination, and project oversight." },
+  { role: "DESIGN ENGINEER",       name: "Name Surname", bio: "Body shape, CAD model, aerodynamic concept development." },
+  { role: "MANUFACTURING ENGINEER",name: "Name Surname", bio: "Production planning, materials, quality control." },
+  { role: "MARKETING MANAGER",     name: "Name Surname", bio: "Brand identity, social media, sponsor communication." },
+  { role: "GRAPHIC DESIGNER",      name: "Name Surname", bio: "Visual identity, presentations, posters, web graphics." },
+  { role: "RESOURCE MANAGER",      name: "Name Surname", bio: "Budgeting, resources, sponsor materials, portfolio." }
 ];
 
+function renderCrew() {
+  const list = document.getElementById("crew-list");
+  if (!list) return;
 
-/* -- 2. Render team grid -------------------------------------------------- */
-function renderTeam() {
-  const grid = document.getElementById("team-grid");
-  if (!grid) return;
-
-  grid.innerHTML = TEAM.map((member, i) => `
-    <article class="card member">
-      <div class="member__avatar">0${i + 1}</div>
-      <span class="member__role">${member.role}</span>
-      <h3 class="card__title">${member.name}</h3>
-      <p>${member.bio}</p>
-    </article>
+  list.innerHTML = CREW.map((m, i) => `
+    <li class="crew__row">
+      <span class="crew__num">${String(i + 1).padStart(2, "0")}</span>
+      <span class="crew__role">${m.role}</span>
+      <div class="crew__details">
+        <div class="crew__name">${m.name}</div>
+        <div class="crew__bio">${m.bio}</div>
+      </div>
+      <span class="crew__arrow">→</span>
+    </li>
   `).join("");
 }
 
-
-/* -- 3. Reveal on scroll -------------------------------------------------- */
-function setupScrollReveal() {
-  const elements = document.querySelectorAll(".reveal");
-  if (!("IntersectionObserver" in window)) {
-    // Fallback: just show everything
-    elements.forEach(el => el.classList.add("is-visible"));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
-
-  elements.forEach(el => observer.observe(el));
-}
-
-
-/* -- 4. Mobile menu toggle ----------------------------------------------- */
+/* Mobile menu — toggle the sidenav into view as a dropdown */
 function setupMobileMenu() {
-  const toggle = document.querySelector(".nav__toggle");
-  const links  = document.querySelector(".nav__links");
-  if (!toggle || !links) return;
+  const toggle = document.querySelector(".topbar__toggle");
+  const nav    = document.querySelector(".sidenav");
+  if (!toggle || !nav) return;
 
   toggle.addEventListener("click", () => {
-    const isOpen = links.classList.toggle("is-open");
+    const isOpen = nav.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(isOpen));
+
+    // On mobile, position it as an overlay panel
+    if (isOpen) {
+      Object.assign(nav.style, {
+        display: "flex",
+        position: "fixed",
+        top: "55px",
+        left: "0",
+        right: "0",
+        transform: "none",
+        background: "var(--navy-deep)",
+        borderTop: "1px solid var(--navy-line)",
+        borderLeft: "none",
+        padding: "20px 28px",
+        fontSize: "0.95rem",
+        zIndex: "60"
+      });
+    } else {
+      nav.removeAttribute("style");
+    }
   });
 
-  // Close menu when a link is clicked (better UX on mobile)
-  links.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      links.classList.remove("is-open");
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    if (nav.classList.contains("is-open")) {
+      nav.classList.remove("is-open");
       toggle.setAttribute("aria-expanded", "false");
-    });
-  });
+      nav.removeAttribute("style");
+    }
+  }));
 }
 
-
-/* -- 5. Boot ------------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
-  renderTeam();
-  setupScrollReveal();
+  renderCrew();
   setupMobileMenu();
 });
