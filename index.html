@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Falcon Dynamics — STEM Racing team. Engineering, aerodynamics, telemetry." />
+  <meta name="description" content="Falcon Dynamics — STEM Racing team. Engineering, aerodynamics, design process." />
   <title>Falcon Dynamics // STEM Racing</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Archivo:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -23,7 +23,7 @@
       <span class="topbar__id">// TEAM.ID 0001</span>
     </div>
     <div class="topbar__right">
-      <span class="topbar__status"><span class="dot"></span> SYSTEM ONLINE</span>
+      <span class="topbar__status"><span class="dot"></span> SEASON 2026</span>
       <button class="topbar__toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -32,7 +32,7 @@
 
   <nav class="sidenav" aria-label="Main">
     <a href="#about">01 / About</a>
-    <a href="#car">02 / Vehicle</a>
+    <a href="#process">02 / Process</a>
     <a href="#team">03 / Crew</a>
     <a href="#sponsors">04 / Sponsors</a>
   </nav>
@@ -49,7 +49,7 @@
 
       <h1 class="hero__title">
         <span class="hero__title-row">FALCON</span>
-        <span class="hero__title-row hero__title-row--orange">DYNAMICS<span class="hero__caret">_</span></span>
+        <span class="hero__title-row hero__title-row--orange">DYNAMICS</span>
       </h1>
 
       <div class="hero__readout">
@@ -63,13 +63,11 @@
         </div>
         <div class="readout-block">
           <span class="readout-block__label">DISCIPLINE</span>
-          <span class="readout-block__value">AERO / CAD / CFD / MFG</span>
+          <span class="readout-block__value">AERO / CAD / MANUFACTURING</span>
         </div>
         <div class="readout-block">
           <span class="readout-block__label">STATUS</span>
-          <span class="readout-block__value readout-block__value--live">
-            <span class="dot dot--orange"></span> ACTIVE BUILD
-          </span>
+          <span class="readout-block__value readout-block__value--accent">ACTIVE BUILD</span>
         </div>
       </div>
 
@@ -84,7 +82,6 @@
         <a href="#team" class="btn">VIEW CREW</a>
       </div>
 
-      <!-- Side rail with axis ticks -->
       <div class="axis-rail" aria-hidden="true">
         <span>00</span><span>10</span><span>20</span><span>30</span>
         <span>40</span><span>50</span><span>60</span><span>70</span>
@@ -119,7 +116,7 @@
           <article class="cell">
             <span class="cell__id">A.02</span>
             <h3 class="cell__title">TECHNOLOGY</h3>
-            <p>CAD modelling, CFD simulation, data analysis, and digital project management.</p>
+            <p>CAD modelling, data analysis, and digital project management tools.</p>
             <span class="cell__bar"></span>
           </article>
           <article class="cell">
@@ -133,84 +130,90 @@
     </section>
 
 
-    <!-- =========================  VEHICLE  ========================= -->
-    <section id="car" class="block block--vehicle">
+    <!-- =========================  PROCESS  ========================= -->
+    <section id="process" class="block">
       <div class="block__header">
         <span class="block__index">02</span>
         <div>
-          <h2 class="block__title">VEHICLE</h2>
-          <p class="block__sub">/ TECHNICAL READOUT</p>
+          <h2 class="block__title">DESIGN PROCESS</h2>
+          <p class="block__sub">/ FROM CONCEPT TO TRACK</p>
         </div>
       </div>
 
-      <div class="vehicle">
-        <!-- Engineering blueprint of the car -->
-        <div class="blueprint">
-          <div class="blueprint__corners">
-            <span></span><span></span><span></span><span></span>
+      <p class="process__intro">
+        Our development follows a four-stage iterative cycle. Each stage
+        feeds back into the previous one — testing reveals issues that
+        send us back to CAD, and CAD reveals limits that reshape the concept.
+      </p>
+
+      <ol class="process">
+        <li class="process__step">
+          <div class="process__index">
+            <span class="process__num">01</span>
+            <span class="process__line"></span>
           </div>
-
-          <svg class="blueprint__svg" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" aria-label="Vehicle side profile">
-            <defs>
-              <pattern id="bp-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(226,138,100,0.12)" stroke-width="1"/>
-              </pattern>
-            </defs>
-            <rect width="800" height="280" fill="url(#bp-grid)"/>
-
-            <!-- Centerline -->
-            <line x1="0" y1="200" x2="800" y2="200" stroke="rgba(226,138,100,0.35)" stroke-width="1" stroke-dasharray="6 6"/>
-
-            <!-- Car silhouette -->
-            <path d="M 80 200 L 140 140 L 280 110 Q 400 95 560 115 L 680 150 L 740 200 Z"
-                  fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linejoin="round"/>
-            <!-- Cockpit -->
-            <path d="M 300 130 Q 400 115 510 132 L 490 165 L 320 165 Z"
-                  fill="none" stroke="var(--orange)" stroke-width="1.5"/>
-            <!-- Rear wing -->
-            <line x1="60" y1="155" x2="120" y2="155" stroke="var(--orange)" stroke-width="2"/>
-            <line x1="68" y1="155" x2="68" y2="200" stroke="var(--orange)" stroke-width="1.5"/>
-            <line x1="112" y1="155" x2="112" y2="200" stroke="var(--orange)" stroke-width="1.5"/>
-            <!-- Front wing -->
-            <line x1="700" y1="195" x2="760" y2="195" stroke="var(--orange)" stroke-width="2"/>
-            <!-- Wheels -->
-            <circle cx="200" cy="200" r="32" fill="none" stroke="var(--orange)" stroke-width="2"/>
-            <circle cx="200" cy="200" r="8" fill="none" stroke="var(--orange)" stroke-width="1.5"/>
-            <line x1="168" y1="200" x2="232" y2="200" stroke="rgba(226,138,100,0.5)" stroke-width="1"/>
-            <line x1="200" y1="168" x2="200" y2="232" stroke="rgba(226,138,100,0.5)" stroke-width="1"/>
-            <circle cx="620" cy="200" r="32" fill="none" stroke="var(--orange)" stroke-width="2"/>
-            <circle cx="620" cy="200" r="8" fill="none" stroke="var(--orange)" stroke-width="1.5"/>
-            <line x1="588" y1="200" x2="652" y2="200" stroke="rgba(226,138,100,0.5)" stroke-width="1"/>
-            <line x1="620" y1="168" x2="620" y2="232" stroke="rgba(226,138,100,0.5)" stroke-width="1"/>
-
-            <!-- Dimension lines -->
-            <line x1="80" y1="245" x2="740" y2="245" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
-            <line x1="80" y1="240" x2="80" y2="250" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
-            <line x1="740" y1="240" x2="740" y2="250" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
-            <text x="410" y="262" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono" font-size="11" text-anchor="middle">L = 210 mm (regulation max)</text>
-
-            <!-- Callouts -->
-            <text x="60" y="135" fill="var(--orange-soft)" font-family="JetBrains Mono" font-size="10">REAR WING</text>
-            <text x="700" y="178" fill="var(--orange-soft)" font-family="JetBrains Mono" font-size="10">F.WING</text>
-            <text x="380" y="100" fill="var(--orange-soft)" font-family="JetBrains Mono" font-size="10">BODY SHELL</text>
-          </svg>
-
-          <div class="blueprint__stamp">
-            <span>FD-2026 / REV.A</span>
-            <span>SHEET 01/04</span>
+          <div class="process__body">
+            <span class="process__phase">PHASE.01 — IDEATION</span>
+            <h3 class="process__name">Concept</h3>
+            <p>Sketches, reference research, and aerodynamic theory. We study top teams, regulations, and physical constraints before drawing a single line. Every team member contributes initial ideas before we converge on a direction.</p>
+            <ul class="process__bullets">
+              <li>Regulation review</li>
+              <li>Reference benchmarking</li>
+              <li>Hand sketches & moodboards</li>
+            </ul>
           </div>
-        </div>
+        </li>
 
-        <!-- Spec readouts -->
-        <div class="spec-table">
-          <div class="spec-row"><span>LENGTH</span><strong>210 <small>mm max</small></strong></div>
-          <div class="spec-row"><span>MASS</span><strong>≥55 <small>g min</small></strong></div>
-          <div class="spec-row"><span>WHEELBASE</span><strong>≥120 <small>mm</small></strong></div>
-          <div class="spec-row"><span>BODY</span><strong>BALSA + CFRP <small>composite</small></strong></div>
-          <div class="spec-row"><span>FINISH</span><strong>2K CLEAR <small>over base</small></strong></div>
-          <div class="spec-row"><span>POWERPLANT</span><strong>CO₂ <small>8 g cartridge</small></strong></div>
-        </div>
-      </div>
+        <li class="process__step">
+          <div class="process__index">
+            <span class="process__num">02</span>
+            <span class="process__line"></span>
+          </div>
+          <div class="process__body">
+            <span class="process__phase">PHASE.02 — DIGITAL</span>
+            <h3 class="process__name">CAD Development</h3>
+            <p>3D modelling in CAD software with full dimensional control. Every surface is parametric, so changes propagate cleanly. We iterate on body shape, wing geometry, and weight distribution before committing to physical production.</p>
+            <ul class="process__bullets">
+              <li>Parametric 3D model</li>
+              <li>Mass & balance simulation</li>
+              <li>Tolerance verification</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="process__step">
+          <div class="process__index">
+            <span class="process__num">03</span>
+            <span class="process__line"></span>
+          </div>
+          <div class="process__body">
+            <span class="process__phase">PHASE.03 — PHYSICAL</span>
+            <h3 class="process__name">Manufacturing</h3>
+            <p>Translating the CAD model into a real object. CNC machining of the body block, careful sanding for surface finish, ballast placement, and final assembly. Tolerances are tight — a misaligned axle costs hundredths of a second.</p>
+            <ul class="process__bullets">
+              <li>CNC body machining</li>
+              <li>Surface finishing & paint</li>
+              <li>Wheel & axle assembly</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="process__step">
+          <div class="process__index">
+            <span class="process__num">04</span>
+          </div>
+          <div class="process__body">
+            <span class="process__phase">PHASE.04 — VALIDATION</span>
+            <h3 class="process__name">Testing & Iteration</h3>
+            <p>Track runs, timing, and analysis. Data from each run informs the next revision — sometimes a simple weight redistribution, sometimes a full body redesign. We treat every result as evidence, not opinion.</p>
+            <ul class="process__bullets">
+              <li>Run-time measurement</li>
+              <li>Defect & failure analysis</li>
+              <li>Revision planning</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
     </section>
 
 
