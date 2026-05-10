@@ -603,21 +603,8 @@ img,svg { display: block; max-width: 100%; }
   font-size: 0.95rem;
   letter-spacing: 0.02em;
 }
-.sponsor-slot__logo--image {
-  background: white;
-  border: 1px solid var(--navy-line);
-  border-style: solid;        /* nadpisuje 'dashed' z bazowej klasy */
-  padding: 12px;
-}
 
-.sponsor-slot__logo--image img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
+
 
 /* -- FOOTER ------------------------------------------------------------- */
 .footer {
