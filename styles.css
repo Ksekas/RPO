@@ -1,0 +1,588 @@
+/* ==========================================================================
+   FALCON DYNAMICS — STYLES
+   Organised in sections: Variables · Reset · Layout · Components · Responsive
+   ========================================================================== */
+
+
+/* -- 1. CSS Variables ------------------------------------------------------ */
+:root {
+  /* Brand colours */
+  --orange:       #e25a2c;
+  --orange-soft:  #f08a64;
+  --orange-glow:  rgba(226, 90, 44, 0.25);
+
+  /* Backgrounds */
+  --blue:         #0f3a4a;
+  --navy:         #081a24;
+  --dark:         #050c12;
+
+  /* Text */
+  --text:         #e6f0f4;
+  --muted:        #8faab5;
+
+  /* Surfaces */
+  --card:         rgba(255, 255, 255, 0.05);
+  --card-hover:   rgba(255, 255, 255, 0.08);
+  --border:       rgba(255, 255, 255, 0.11);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  /* Layout */
+  --max-width:    1200px;
+  --section-pad:  clamp(60px, 9vw, 110px);
+  --radius:       18px;
+  --radius-lg:    28px;
+}
+
+
+/* -- 2. Reset & Base ------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-display);
+  background: radial-gradient(circle at 20% 0%, var(--blue) 0%, var(--navy) 45%, var(--dark) 100%);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Subtle grid texture in the background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+img, svg { display: block; max-width: 100%; }
+a        { color: inherit; text-decoration: none; }
+button   { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+
+/* -- 3. Header & Navigation ------------------------------------------------ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: rgba(5, 12, 18, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.nav__logo-mark {
+  color: var(--orange);
+  font-size: 1.2rem;
+}
+
+.nav__links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav__links a {
+  font-size: 0.92rem;
+  color: var(--text);
+  opacity: 0.78;
+  transition: opacity 0.2s, color 0.2s;
+  position: relative;
+}
+
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  transition: width 0.25s ease;
+}
+
+.nav__links a:hover {
+  opacity: 1;
+  color: var(--orange-soft);
+}
+
+.nav__links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile menu toggle (hamburger) */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition: 0.3s;
+}
+
+
+/* -- 4. Layout helpers ----------------------------------------------------- */
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--section-pad) 28px;
+}
+
+.section__header {
+  margin-bottom: 50px;
+}
+
+.section__eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange-soft);
+  margin-bottom: 14px;
+}
+
+.section__title {
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.section__title .accent {
+  color: var(--orange);
+}
+
+.section__intro {
+  color: var(--muted);
+  max-width: 720px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+
+/* -- 5. Hero --------------------------------------------------------------- */
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 150px 28px 90px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(226, 90, 44, 0.35);
+  border-radius: 999px;
+  background: rgba(226, 90, 44, 0.08);
+  color: var(--orange-soft);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+}
+
+.tagline__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 10px var(--orange);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+.hero__title {
+  font-size: clamp(3rem, 8.5vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.hero__title-accent {
+  display: block;
+  color: var(--orange);
+}
+
+.hero__lead {
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+
+/* -- 6. Buttons ------------------------------------------------------------ */
+.buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn--primary {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 8px 24px var(--orange-glow);
+}
+
+.btn--primary:hover {
+  background: var(--orange-soft);
+  border-color: var(--orange-soft);
+}
+
+
+/* -- 7. Hero car illustration --------------------------------------------- */
+.car-stage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+}
+
+.car-stage__glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(circle, var(--orange-glow), transparent 70%);
+}
+
+.car-stage__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.car-illustration {
+  position: absolute;
+  bottom: 18%;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.5));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+
+/* -- 8. Cards & Grid ------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+.card {
+  position: relative;
+  padding: 30px 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  transition: transform 0.25s, background 0.25s, border-color 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: var(--card-hover);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.card__number {
+  display: block;
+  font-family: var(--font-mono);
+  color: var(--orange);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 14px;
+}
+
+.card__title {
+  color: var(--orange-soft);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+
+/* -- 9. Stats -------------------------------------------------------------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.stat {
+  text-align: center;
+  padding: 32px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  transition: transform 0.25s, background 0.25s;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+  background: var(--card-hover);
+}
+
+.stat__value {
+  display: block;
+  color: var(--orange);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat__label {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* -- 10. Team members ----------------------------------------------------- */
+.member__avatar {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(226, 90, 44, 0.35);
+  border-radius: 14px;
+  background: rgba(226, 90, 44, 0.1);
+  color: var(--orange-soft);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.member__role {
+  display: block;
+  color: var(--orange);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+
+/* -- 11. Sponsor logo placeholders ---------------------------------------- */
+.card--sponsor {
+  text-align: center;
+}
+
+.card__logo-placeholder {
+  display: grid;
+  place-items: center;
+  height: 80px;
+  margin-bottom: 18px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+}
+
+
+/* -- 12. Footer ----------------------------------------------------------- */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+  border-top: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+
+/* -- 13. Reveal-on-scroll animation --------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .car-illustration,
+  .tagline__dot {
+    animation: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+
+/* -- 14. Responsive ------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 120px;
+    gap: 40px;
+  }
+
+  .grid--3,
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 14px 28px;
+    background: rgba(5, 12, 18, 0.96);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 0 0 16px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav__links.is-open {
+    transform: translateX(0);
+  }
+
+  .nav__links li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav__links li:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid--3,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
