@@ -1,22 +1,24 @@
 /* ==========================================================================
-   FALCON DYNAMICS — TELEMETRY / BLUEPRINT AESTHETIC
+   FALCON DYNAMICS â€” TELEMETRY / BLUEPRINT AESTHETIC
    ========================================================================== */
 
 
 /* -- Variables ------------------------------------------------------------ */
 :root {
-  --orange:       #e25a2c;
-  --orange-soft:  #ea8a64;
-  --orange-dim:   rgba(226, 90, 44, 0.5);
+  /* Orange-red from logo FALCON lettering */
+  --orange:       #d44f22;
+  --orange-soft:  #e07a55;
+  --orange-dim:   rgba(212, 79, 34, 0.45);
 
-  --navy-deep:    #061018;
-  --navy:         #0a1822;
-  --navy-soft:    #122433;
-  --navy-line:    #1a3142;
+  /* Teal/petrol from logo background */
+  --navy-deep:    #071a1f;
+  --navy:         #0c2530;
+  --navy-soft:    #163340;
+  --navy-line:    #1e4558;
 
-  --paper:        #e6edf2;
-  --paper-dim:    #a5b6c2;
-  --paper-faint:  #6a7e8e;
+  --paper:        #deeaee;
+  --paper-dim:    #8fb0bc;
+  --paper-faint:  #527585;
 
   --font-display: 'Archivo', system-ui, sans-serif;
   --font-body:    'IBM Plex Sans', system-ui, sans-serif;
@@ -177,7 +179,7 @@ img,svg { display: block; max-width: 100%; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--navy-line);
-  background: rgba(10, 24, 34, 0.6);
+  background: rgba(12, 37, 48, 0.6);
 }
 .readout-block {
   padding: 18px 20px;
@@ -242,7 +244,7 @@ img,svg { display: block; max-width: 100%; }
 .btn--primary {
   background: var(--orange);
   border-color: var(--orange);
-  color: var(--navy-deep);
+  color: #fff;
 }
 .btn--primary:hover {
   background: var(--orange-soft);
@@ -554,6 +556,49 @@ img,svg { display: block; max-width: 100%; }
 
 
 /* -- SPONSORS ----------------------------------------------------------- */
+.sponsors__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.sponsors__grid--single {
+  max-width: 320px;
+}
+
+.sponsor-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid var(--navy-line);
+  padding: 1rem 1.25rem;
+  min-width: 220px;
+  min-height: 80px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.sponsor-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 1px var(--orange);
+}
+
+.sponsor-card img {
+  max-height: 80px;
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.block--partners {
+  border-top: 1px solid var(--navy-line);
+}
+
 .sponsor-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -581,7 +626,6 @@ img,svg { display: block; max-width: 100%; }
   color: var(--orange);
 }
 
-/* Empty placeholder slot */
 .sponsor-slot__logo {
   display: flex;
   align-items: center;
@@ -595,12 +639,10 @@ img,svg { display: block; max-width: 100%; }
   color: var(--paper-faint);
 }
 
-/* Slot containing a real logo image — overrides defaults */
 .sponsor-slot__logo--image {
   background: white;
   border: 1px solid var(--navy-line);
   padding: 14px;
-  /* Override any inherited font/text styles */
   font-size: 0;
   letter-spacing: 0;
 }
