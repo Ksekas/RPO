@@ -13,52 +13,39 @@ function renderCrew() {
   const list = document.getElementById("crew-list");
   if (!list) return;
   list.innerHTML = CREW.map((m, i) => `
-    <li class="crew__row">
-      <span class="crew__num">${String(i + 1).padStart(2, "0")}</span>
-      <span class="crew__role">${m.role}</span>
-      <div class="crew__details">
-        <div class="crew__name">${m.name}</div>
-        <div class="crew__bio">${m.bio}</div>
+    <li class="roster__item">
+      <span class="roster__num">${String(i + 1).padStart(2, "0")}</span>
+      <div class="roster__who">
+        <span class="roster__role">${m.role}</span>
+        <h3 class="roster__name">${m.name}</h3>
       </div>
-      <span class="crew__arrow">→</span>
+      <p class="roster__bio">${m.bio}</p>
     </li>
   `).join("");
 }
 function setupMobileMenu() {
-  const toggle = document.querySelector(".topbar__toggle");
-  const nav    = document.querySelector(".sidenav");
-  if (!toggle || !nav) return;
+  const toggle = document.querySelector(".nav__toggle");
+  const links  = document.querySelector(".nav__links");
+  if (!toggle || !links) return;
   toggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("is-open");
+    const isOpen = links.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(isOpen));
-    if (isOpen) {
-      Object.assign(nav.style, {
-        display: "flex",
-        position: "fixed",
-        top: "55px",
-        left: "0",
-        right: "0",
-        transform: "none",
-        background: "var(--navy-deep)",
-        borderTop: "1px solid var(--navy-line)",
-        borderLeft: "none",
-        padding: "20px 28px",
-        fontSize: "0.95rem",
-        zIndex: "60"
-      });
-    } else {
-      nav.removeAttribute("style");
-    }
   });
-  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-    if (nav.classList.contains("is-open")) {
-      nav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      nav.removeAttribute("style");
-    }
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    links.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
   }));
+}
+
+function setupNavScroll() {
+  const nav = document.querySelector(".nav");
+  if (!nav) return;
+  const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 40);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 }
 document.addEventListener("DOMContentLoaded", () => {
   renderCrew();
   setupMobileMenu();
+  setupNavScroll();
 });
