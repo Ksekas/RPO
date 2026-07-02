@@ -1,20 +1,17 @@
 /* ==========================================================================
    FALCON DYNAMICS — SCRIPT
    ========================================================================== */
-
 const CREW = [
   { role: "TEAM MANAGER",                   name: "Ksenia Kasparek",       bio: "Plans, deadlines, coordination, and project oversight." },
   { role: "DESIGN ENGINEER",                name: "Maria Chrzanowska",     bio: "Body shape, CAD model, aerodynamic concept development." },
   { role: "DESIGN ENGINEER",                name: "Eliza Siedlecka",       bio: "Body shape, CAD model, aerodynamic concept development." },
-  { role: "TEST ENGINEER",                  name: "Maciej Dziurnikowski",  bio: "Test runs, data collection, and performance evaluation." },
-  { role: "BRAND AND PARTNERSHIPS MANAGER", name: "Maksymilian Zięć",      bio: "Visual identity, posters, and resources." },
-  { role: "MANUFACTURING ENGINEER",         name: "Nikita Yagnyatinskiy",  bio: "Production planning, materials, quality control." }
+  { role: "DRIVER & RESEARCH ENGINEER",     name: "Maciej Dziurnikowski",  bio: "Competition driver, research, and manufacturing support." },
+  { role: "BRAND AND PARTNERSHIPS MANAGER", name: "Maksymilian Zięć",      bio: "Visual identity, posters, and marketing." },
+  { role: "FINANCE MANAGER",                name: "Nikita Yagnyatinskiy",  bio: "Budget tracking, procurement, and expenditure management." }
 ];
-
 function renderCrew() {
   const list = document.getElementById("crew-list");
   if (!list) return;
-
   list.innerHTML = CREW.map((m, i) => `
     <li class="crew__row">
       <span class="crew__num">${String(i + 1).padStart(2, "0")}</span>
@@ -27,16 +24,13 @@ function renderCrew() {
     </li>
   `).join("");
 }
-
 function setupMobileMenu() {
   const toggle = document.querySelector(".topbar__toggle");
   const nav    = document.querySelector(".sidenav");
   if (!toggle || !nav) return;
-
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(isOpen));
-
     if (isOpen) {
       Object.assign(nav.style, {
         display: "flex",
@@ -56,7 +50,6 @@ function setupMobileMenu() {
       nav.removeAttribute("style");
     }
   });
-
   nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
     if (nav.classList.contains("is-open")) {
       nav.classList.remove("is-open");
@@ -65,7 +58,6 @@ function setupMobileMenu() {
     }
   }));
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   renderCrew();
   setupMobileMenu();
