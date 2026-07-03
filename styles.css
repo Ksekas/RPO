@@ -492,6 +492,46 @@ ul, ol  { list-style: none; }
 }
 
 
+/* -- CONTACT --------------------------------------------------------------------- */
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.contact__link {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 30px;
+  border: 1px solid var(--navy-line);
+  border-radius: 4px;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.contact__link:hover {
+  border-color: var(--cyan);
+  background: var(--navy-soft);
+  transform: translateY(-2px);
+}
+.contact__link:nth-child(2):hover { border-color: var(--orange); }
+
+.contact__label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+}
+.contact__value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+}
+
+
 /* -- FOOTER ---------------------------------------------------------------------- */
 .footer {
   max-width: var(--max);
